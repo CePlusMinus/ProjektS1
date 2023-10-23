@@ -1,7 +1,7 @@
 # ProjektS1
 Projekt zaliczeniowy na semestr 1, C++
 
-Temat: Zarządzanie nieruchomościami
+Temat: Zarządzanie nieruchomościami  
 Planowane funkcje:
 - Podgląd listy mieszkań
 - Podgląd klientów
