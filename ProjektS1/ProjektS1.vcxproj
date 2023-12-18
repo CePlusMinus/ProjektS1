@@ -128,6 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Mieszkanie.cpp" />
     <ClCompile Include="ProjektS1.cpp" />
     <ClCompile Include="KlasaBazowa.cpp" />
     <ClCompile Include="Klient.cpp" />
@@ -136,6 +137,7 @@
   <ItemGroup>
     <ClInclude Include="includes\Klient.h" />
     <ClInclude Include="includes\KlasaBazowa.h" />
+    <ClInclude Include="includes\Mieszkanie.h" />
     <ClInclude Include="includes\Sprzedawca.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
