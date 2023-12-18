@@ -128,13 +128,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ProjektS1.cpp" />
     <ClCompile Include="KlasaBazowa.cpp" />
     <ClCompile Include="Klient.cpp" />
-    <ClCompile Include="ProjektS1.cpp" />
+    <ClCompile Include="Sprzedawca.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes\Klient.h" />
     <ClInclude Include="includes\KlasaBazowa.h" />
+    <ClInclude Include="includes\Sprzedawca.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
