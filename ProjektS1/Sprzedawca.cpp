@@ -54,3 +54,17 @@ void Sprzedawca::setNumer(std::string nowyNumer)
 		numer = nowyNumer;
 }
 
+Sprzedawca::Sprzedawca(std::string imie, std::string naziwsko, std::string email, std::string numer){
+	setImie(imie);
+	setNazwisko(nazwisko);
+	setEmail(email);
+	setNumer(numer);
+}
+
+std::string Sprzedawca::toString() {
+	std::string idString = id == -1 ? "[NIE USTAWIONO]" : std::to_string(id);
+	std::string wynik = "Sprzedawca[ID: " + idString + ", Imiê: " + imie + ", Nazwisko: " + nazwisko + ", Email: "+email+ ", Numer telefonu:"+ numer+"]";
+
+	return wynik;
+}
+
