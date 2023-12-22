@@ -2,98 +2,93 @@
 
 std::string Mieszkanie::getUlica() const
 {
-	return ulica;
+    return ulica;
 }
 
 std::string Mieszkanie::getNumerMieszkania() const
 {
-	return nr_mieszkania;
+    return nr_mieszkania;
 }
 
-std::string Mieszkanie::getCzyWyposazenie() const
+bool Mieszkanie::getCzyWyposazenie() const
 {
-	return wyposazenie;
+    return wyposazenie;
 }
 
-std::string Mieszkanie::getWielkoscMieszkania() const
+double Mieszkanie::getWielkoscMieszkania() const
 {
-	return wiel_mieszkania;
+    return wiel_mieszkania;
 }
 
-std::string Mieszkanie::getCenaMieszkania() const
+double Mieszkanie::getCenaMieszkania() const
 {
-	return cena_mieszkania;
+    return cena_mieszkania;
 }
 
-std::string Mieszkanie::getWlasciciel() const
+long Mieszkanie::getWlasciciel() const
 {
-	return wlasciciel;
+    return wlasciciel;
 }
 
-void Mieszkanie::setUlica(std::string p_ulica) 
+void Mieszkanie::setUlica(std::string p_ulica)
 {
-	if (p_ulica.length() < 1)
-		throw "Mieszaknie musi byc umieszczone na ulicy";
-	else
-		ulica = p_ulica;
+    if (p_ulica.length() < 1)
+        throw "Mieszkanie musi byc umieszczone na ulicy";
+    else
+        ulica = p_ulica;
 }
 
-void Mieszkanie::setNumerMieszkania(std::string p_numermieszkania) 
+void Mieszkanie::setNumerMieszkania(std::string p_numermieszkania)
 {
-	if (p_numermieszkania.length() < 1)
-		throw "Mieszkanie musi posiadaæ numer mieszkania";
-	else
-		nr_mieszkania = p_numermieszkania;
+    if (p_numermieszkania.length() < 1)
+        throw "Mieszkanie musi posiadaæ numer mieszkania";
+    else
+        nr_mieszkania = p_numermieszkania;
 }
 
-void Mieszkanie::setCzyWyposazenie(std::string p_czywyposazenie)
+void Mieszkanie::setCzyWyposazenie(bool p_czywyposazenie)
 {
-	if (p_czywyposazenie.length() < 1)
-		throw "Wyposazenie mieszkania musi byæ oznaczone";
-	else
-		wyposazenie = p_czywyposazenie;
+    wyposazenie = p_czywyposazenie;
 }
 
-void Mieszkanie::setWielkoscMieszkania(std::string p_wielkoscmieszkania)
+void Mieszkanie::setWielkoscMieszkania(double p_wielkoscmieszkania)
 {
-	if (p_wielkoscmieszkania.length() < 1)
-		throw "Mieszkanie musi miec okreslona wielkosc";
-	else
-		wiel_mieszkania = p_wielkoscmieszkania;
+    if (p_wielkoscmieszkania <= 0)
+        throw "Mieszkanie musi mieæ okreœlon¹ wielkoœæ";
+    else
+        wiel_mieszkania = p_wielkoscmieszkania;
 }
 
-void Mieszkanie::setCenaMieszkania(std::string p_cenamieszkania)
+void Mieszkanie::setCenaMieszkania(double p_cenamieszkania)
 {
-	if (p_cenamieszkania.length() < 1)
-		throw "Mieszkanie musi miec swoja cene";
-	else
-		cena_mieszkania = p_cenamieszkania;
+    if (p_cenamieszkania <= 0)
+        throw "Mieszkanie musi mieæ swoj¹ cenê";
+    else
+        cena_mieszkania = p_cenamieszkania;
 }
 
-void Mieszkanie::setWlasciciel(std::string p_wlasciciel)
+void Mieszkanie::setWlasciciel(long p_wlasciciel)
 {
-	if (p_wlasciciel.length() < 1)
-		throw "Mieszkanie musi miec swojego wlasciciela";
-	else
-		wlasciciel = p_wlasciciel;
+    if (p_wlasciciel <= 0)
+        throw "Mieszkanie musi mieæ swojego w³aœciciela";
+    else
+        wlasciciel = p_wlasciciel;
 }
 
-
-
-Mieszkania::Mieszkania(std::string ulica, std::string numer_mieszkania, std::string czy_wyposazenie, std::string wielkosc_mieszkania, std::string cena_mieszkania, std::string wlasciciel) 
+Mieszkania::Mieszkania(std::string ulica, std::string numer_mieszkania, bool czy_wyposazenie, double wielkosc_mieszkania, double cena_mieszkania, long wlasciciel)
 {
-	setUlica(ulica);
-	setNumerMieszkania(numer_mieszkania);
-	setCzyWyposazenie(czy_wyposazenie);
-	setWielkoscMieszkania(wielkosc_mieszkania);
-	setCenaMieszkania(cena_mieszkania);
-	setWlasciciel(wlasciciel);
+    setUlica(ulica);
+    setNumerMieszkania(numer_mieszkania);
+    setCzyWyposazenie(czy_wyposazenie);
+    setWielkoscMieszkania(wielkosc_mieszkania);
+    setCenaMieszkania(cena_mieszkania);
+    setWlasciciel(wlasciciel);
 }
 
-//Implementacja metody abstrakcyjnej "toString" z "KlasaBazowa"
-std::string Mieszkania::toString() {
-	std::string idString = id == -1 ? "[NIE USTAWIONO]" : std::to_string(id);
-	std::string wynik = "Mieszkania[ID: " + idString + ", Ulica: " + ulica + ", Numer mieszkania: " + numer_mieszknia + ", Czy wyposazone" + czy_wyposazone + ", Wielkosc mieszkania" + wielkosc_mieszkania + ", Cena mieszkania" + cena_mieszkania + "Wlsciciel mieszkania" +  wlasciciel+ "]";
+std::string Mieszkania::toString()
+{
+    std::string idString = id == -1 ? "[NIE USTAWIONO]" : std::to_string(id);
+    std::string wynik = "Mieszkania[ID: " + idString + ", Ulica: " + ulica + ", Numer mieszkania: " + numer_mieszkania + ", Czy wyposa¿one" + (czy_wyposazone ? "TAK" : "NIE") + ", Wielkoœæ mieszkania" + std::to_string(wielkosc_mieszkania) + ", Cena mieszkania" + std::to_string(cena_mieszkania) + "W³aœciciel mieszkania" + std::to_string(wlasciciel) + "]";
 
-	return wynik;
+    return wynik;
 }
