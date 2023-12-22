@@ -1,2 +1,2 @@
-#include "includes/BazaDanych.h"
-//Jako, ¿e klasa BazaDanych operuje na template'ach, to niestety nie mo¿emy rozdzieliæ deklaracji od definicji i wszystko jest w pliku .h
+ï»¿#include "includes/BazaDanych.h"
+//Jako, Å¼e klasa BazaDanych operuje na template'ach, to niestety nie moÅ¼emy rozdzieliÄ‡ deklaracji od definicji i wszystko jest w pliku .h

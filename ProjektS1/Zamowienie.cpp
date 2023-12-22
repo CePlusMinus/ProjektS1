@@ -1,4 +1,4 @@
-#include "includes/Zamowienie.h"
+ï»¿#include "includes/Zamowienie.h"
 
 Zamowienie::Zamowienie(std::string id_mieszkania, std::string id_sprzedawcy, std::string id_klienta, std::string zamowione)
 {
@@ -30,31 +30,31 @@ std::string Zamowienie::getZamowione() const
 
 void Zamowienie::setMieszkanie(std::string p_mieszkanie)
 {
-    // Tu mo¿e byæ dodatkowa walidacja, jeœli jest potrzebna
+    // Tu moÅ¼e byÄ‡ dodatkowa walidacja, jeÅ›li jest potrzebna
     id_mieszkania = p_mieszkanie;
 }
 
 void Zamowienie::setSprzedawca(std::string p_sprzedawca)
 {
-    // Tu mo¿e byæ dodatkowa walidacja, jeœli jest potrzebna
+    // Tu moÅ¼e byÄ‡ dodatkowa walidacja, jeÅ›li jest potrzebna
     id_sprzedawcy = p_sprzedawca;
 }
 
 void Zamowienie::setKlient(std::string p_klient)
 {
-    // Tu mo¿e byæ dodatkowa walidacja, jeœli jest potrzebna
+    // Tu moÅ¼e byÄ‡ dodatkowa walidacja, jeÅ›li jest potrzebna
     id_klienta = p_klient;
 }
 
 void Zamowienie::setZamowione(std::string p_zamowione)
 {
-    // Tu mo¿e byæ dodatkowa walidacja, jeœli jest potrzebna
+    // Tu moÅ¼e byÄ‡ dodatkowa walidacja, jeÅ›li jest potrzebna
     zamowione = p_zamowione;
 }
 
 std::string Zamowienie::toString() const
 {
     std::string idString = id == -1 ? "[NIE USTAWIONO]" : std::to_string(id);
-    std::string wynik = "Zamowienie[ID: " + idString + ", ID mieszkania" + id_mieszkania + ", ID sprzedawcy" + id_sprzedawcy + ", ID klienta" + id_klienta + ", Zamówiony" + zamowione + "]";
+    std::string wynik = "Zamowienie[ID: " + idString + ", ID mieszkania" + id_mieszkania + ", ID sprzedawcy" + id_sprzedawcy + ", ID klienta" + id_klienta + ", ZamÃ³wiony" + zamowione + "]";
     return wynik;
 }

@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <string>
 #include "KlasaBazowa.h"
 class Sprzedawca : public KlasaBazowa

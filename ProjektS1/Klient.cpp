@@ -1,4 +1,4 @@
-#include "includes/Klient.h"
+ï»¿#include "includes/Klient.h"
 
 std::string Klient::getImie() const{
 	return imie;
@@ -10,14 +10,14 @@ std::string Klient::getNazwisko() const{
 
 void Klient::setImie(std::string noweImie) {
 	if (noweImie.length() < 1)
-		throw "Imiê klienta nie mo¿e byæ pustym napisem!";
+		throw "ImiÄ™ klienta nie moÅ¼e byÄ‡ pustym napisem!";
 	else
 		imie = noweImie;
 }
 
 void Klient::setNazwisko(std::string noweNazwisko) {
 	if (noweNazwisko.length() < 1)
-		throw "Nazwisko klienta nie mo¿e byæ pustym napisem!";
+		throw "Nazwisko klienta nie moÅ¼e byÄ‡ pustym napisem!";
 	else
 		nazwisko = noweNazwisko;
 }
@@ -30,7 +30,7 @@ Klient::Klient(std::string imie, std::string nazwisko) {
 //Implementacja metody abstrakcyjnej "toString" z "KlasaBazowa"
 std::string Klient::toString() {
 	std::string idString = id == -1 ? "[NIE USTAWIONO]" : std::to_string(id);
-	std::string wynik = "Klient[ID: " + idString + ", Imiê: " + imie + ", Nazwisko: " + nazwisko + "]";
+	std::string wynik = "Klient[ID: " + idString + ", ImiÄ™: " + imie + ", Nazwisko: " + nazwisko + "]";
 
 	return wynik;
 }

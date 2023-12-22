@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "KlasaBazowa.h"
 class Klient : public KlasaBazowa
 {

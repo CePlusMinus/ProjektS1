@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include "includes/Sprzedawca.h"
 #include <regex>
 
@@ -20,14 +20,14 @@ std::string Sprzedawca::getNumer()const
 }
 void Sprzedawca::setImie(std::string noweImie) {
 	if (noweImie.length() < 1)
-		throw "Imiê sprzedawcy nie mo¿e byæ pustym napisem!";
+		throw "ImiÄ™ sprzedawcy nie moÅ¼e byÄ‡ pustym napisem!";
 	else
 		imie = noweImie;
 }
 
 void Sprzedawca::setNazwisko(std::string noweNazwisko) {
 	if (noweNazwisko.length() < 1)
-		throw "Imiê sprzedawcy nie mo¿e byæ pustym napisem!";
+		throw "ImiÄ™ sprzedawcy nie moÅ¼e byÄ‡ pustym napisem!";
 	else
 		nazwisko = noweNazwisko;
 }
@@ -63,7 +63,7 @@ Sprzedawca::Sprzedawca(std::string imie, std::string naziwsko, std::string email
 
 std::string Sprzedawca::toString() {
 	std::string idString = id == -1 ? "[NIE USTAWIONO]" : std::to_string(id);
-	std::string wynik = "Sprzedawca[ID: " + idString + ", Imiê: " + imie + ", Nazwisko: " + nazwisko + ", Email: "+email+ ", Numer telefonu:"+ numer+"]";
+	std::string wynik = "Sprzedawca[ID: " + idString + ", ImiÄ™: " + imie + ", Nazwisko: " + nazwisko + ", Email: "+email+ ", Numer telefonu:"+ numer+"]";
 
 	return wynik;
 }

@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <locale>
 #include "includes/Klient.h"
 #include "includes/BazaDanych.h"
@@ -7,18 +7,18 @@ int main()
 {
 	std::setlocale(LC_CTYPE, "Polish");
 
-	Klient klient("Grzegorz", "Brzêczyszczykiewicz");
-	BazaDanych<Klient> bazaKlientow; //Obiekt, zarz¹dzaj¹cy list¹ obiektów danego typu
+	Klient klient("Grzegorz", "BrzÄ™czyszczykiewicz");
+	BazaDanych<Klient> bazaKlientow; //Obiekt, zarzÄ…dzajÄ…cy listÄ… obiektÃ³w danego typu
 
 	std::cout << klient.toString() << "\n";
 
-	bazaKlientow.save(klient); //Dodajemy referencjê obiektu do listy, jeœli coœ pozmieniamy to w liœcie te¿ siê zmieni
+	bazaKlientow.save(klient); //Dodajemy referencjÄ™ obiektu do listy, jeÅ›li coÅ› pozmieniamy to w liÅ›cie teÅ¼ siÄ™ zmieni
 
-	klient.setImie("Pawe³");
-	klient.setNazwisko("Gaw³owski");
+	klient.setImie("PaweÅ‚");
+	klient.setNazwisko("GawÅ‚owski");
 
-	//Zmieniliœmy dane w kliencie, ale w liœcie te¿ siê zmieni bo tam mamy referencjê do obiektu klient
+	//ZmieniliÅ›my dane w kliencie, ale w liÅ›cie teÅ¼ siÄ™ zmieni bo tam mamy referencjÄ™ do obiektu klient
 	std::cout << bazaKlientow.getById(1).toString() << "\n";
 
-	bazaKlientow.remove(klient); //Usuwamy klienta z listy, nie zapisze siê w pliku
+	bazaKlientow.remove(klient); //Usuwamy klienta z listy, nie zapisze siÄ™ w pliku
 }
