@@ -1,15 +1,15 @@
-#pragma once //nie wiem co to robi, ale Visual to dodaje z automatu wiêc niech zostanie
+ï»¿#pragma once //nie wiem co to robi, ale Visual to dodaje z automatu wiÄ™c niech zostanie
 #include <string>
 class KlasaBazowa
 {
 protected:
-	//Domyœlnie id jest ustawione na -1, aby program wiedzia³, ¿e obiekt nie ma jeszcze przyznanego unikatowego id
+	//DomyÅ›lnie id jest ustawione na -1, aby program wiedziaÅ‚, Å¼e obiekt nie ma jeszcze przyznanego unikatowego id
 	long id = -1;
 public:
-	//Metody które maj¹ nie zmieniaæ wartoœci zmiennych, mo¿na oznaczyæ jako "const" (wtedy kompilator nie pozwoli im zmieniaæ wartoœci zmiennych)
+	//Metody ktÃ³re majÄ… nie zmieniaÄ‡ wartoÅ›ci zmiennych, moÅ¼na oznaczyÄ‡ jako "const" (wtedy kompilator nie pozwoli im zmieniaÄ‡ wartoÅ›ci zmiennych)
 	long getId() const;
 	void setId(int noweId);
 
-	//Metoda abstrakcyjna (wirtualna), klasy które dziedzicz¹ po "KlasaBazowa" musz¹ j¹ zaimplementowaæ, a ona sama domyœlnie nie ma implementacji
+	//Metoda abstrakcyjna (wirtualna), klasy ktÃ³re dziedziczÄ… po "KlasaBazowa" muszÄ… jÄ… zaimplementowaÄ‡, a ona sama domyÅ›lnie nie ma implementacji
 	virtual std::string toString() = 0;
 };

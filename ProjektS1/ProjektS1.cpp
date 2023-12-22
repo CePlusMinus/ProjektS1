@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <locale>
 #include "includes/Klient.h"
 
@@ -6,9 +6,9 @@ int main()
 {
 	std::setlocale(LC_CTYPE, "Polish");
 
-	Klient klient("Grzegorz", "Brzêczyszczykiewicz");
+	Klient klient("Grzegorz", "BrzÄ™czyszczykiewicz");
 
-	//Przyk³ad polimorfizmu: mo¿emy uznaæ, ¿e "Klient" to jakby siê zastanowiæ odmiana "KlasaBazowa", wiêc tak mo¿emy go traktowaæ
+	//PrzykÅ‚ad polimorfizmu: moÅ¼emy uznaÄ‡, Å¼e "Klient" to jakby siÄ™ zastanowiÄ‡ odmiana "KlasaBazowa", wiÄ™c tak moÅ¼emy go traktowaÄ‡
 	KlasaBazowa* baza = &klient;
 
 	std::cout << baza -> toString();
