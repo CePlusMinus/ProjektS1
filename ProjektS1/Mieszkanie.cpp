@@ -88,7 +88,7 @@ Mieszkanie::Mieszkanie(std::string ulica, std::string numer_mieszkania, bool czy
 std::string Mieszkanie::toString()
 {
     std::string idString = id == -1 ? "[NIE USTAWIONO]" : std::to_string(id);
-    std::string wynik = "Mieszkanie[ID: " + idString + ", Ulica: " + ulica + ", Numer mieszkania: " + numer_mieszkania + ", Czy wyposa¿one: " + (czy_wyposazone ? "TAK" : "NIE") + ", Wielkoœæ mieszkania: " + std::to_string(wielkosc_mieszkania) + ", Cena mieszkania: " + std::to_string(cena_mieszkania) + " W³aœciciel mieszkania: " + std::to_string(wlasciciel) + "]";
+    std::string wynik = "Mieszkanie[ID: " + idString + ", Ulica: " + ulica + ", Numer mieszkania: " + numer_mieszkania + ", Czy wyposa¿one: " + (czy_wyposazenie ? "TAK" : "NIE") + ", Wielkoœæ mieszkania: " + std::to_string(wielkosc_mieszkania) + ", Cena mieszkania: " + std::to_string(cena_mieszkania) + " W³aœciciel mieszkania: " + std::to_string(wlasciciel) + "]";
 
     return wynik;
 }

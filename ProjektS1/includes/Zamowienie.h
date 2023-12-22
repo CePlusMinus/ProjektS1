@@ -1,7 +1,7 @@
 #pragma once
-#include "Klasa_Bazowa.h"
+#include "KlasaBazowa.h"
 
-class Zamowienia : public Klasa_Bazowa
+class Zamowienie : public KlasaBazowa
 {
 private:
     std::string id_mieszkania;
@@ -10,7 +10,7 @@ private:
     std::string zamowione;
 
 public:
-    Zamowienia(std::string id_mieszkania, std::string id_sprzedawcy, std::string id_klienta, std::string zamowione);
+    Zamowienie(std::string id_mieszkania, std::string id_sprzedawcy, std::string id_klienta, std::string zamowione);
 
     std::string getMieszkanie() const;
     std::string getSprzedawca() const;
