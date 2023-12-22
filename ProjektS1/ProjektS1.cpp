@@ -5,7 +5,7 @@
 
 int main()
 {
-	std::setlocale(LC_CTYPE, "Polish");
+	std::setlocale(LC_ALL, "Polish.UTF-8");
 
 	Klient klient("Grzegorz", "Brzęczyszczykiewicz");
 	BazaDanych<Klient> bazaKlientow; //Obiekt, zarządzający listą obiektów danego typu
