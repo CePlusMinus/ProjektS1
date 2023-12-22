@@ -128,6 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BazaDanych.cpp" />
     <ClCompile Include="Mieszkanie.cpp" />
     <ClCompile Include="ProjektS1.cpp" />
     <ClCompile Include="KlasaBazowa.cpp" />
@@ -136,6 +137,7 @@
     <ClCompile Include="Zamowienie.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="includes\BazaDanych.h" />
     <ClInclude Include="includes\Klient.h" />
     <ClInclude Include="includes\KlasaBazowa.h" />
     <ClInclude Include="includes\Mieszkanie.h" />

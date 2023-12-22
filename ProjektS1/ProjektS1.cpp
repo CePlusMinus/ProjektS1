@@ -1,15 +1,24 @@
 #include <iostream>
 #include <locale>
 #include "includes/Klient.h"
+#include "includes/BazaDanych.h"
 
 int main()
 {
 	std::setlocale(LC_CTYPE, "Polish");
 
 	Klient klient("Grzegorz", "Brzêczyszczykiewicz");
+	BazaDanych<Klient> bazaKlientow; //Obiekt, zarz¹dzaj¹cy list¹ obiektów danego typu
 
-	//Przyk³ad polimorfizmu: mo¿emy uznaæ, ¿e "Klient" to jakby siê zastanowiæ odmiana "KlasaBazowa", wiêc tak mo¿emy go traktowaæ
-	KlasaBazowa* baza = &klient;
+	std::cout << klient.toString() << "\n";
 
-	std::cout << baza -> toString();
+	bazaKlientow.save(klient); //Dodajemy referencjê obiektu do listy, jeœli coœ pozmieniamy to w liœcie te¿ siê zmieni
+
+	klient.setImie("Pawe³");
+	klient.setNazwisko("Gaw³owski");
+
+	//Zmieniliœmy dane w kliencie, ale w liœcie te¿ siê zmieni bo tam mamy referencjê do obiektu klient
+	std::cout << bazaKlientow.getById(1).toString() << "\n";
+
+	bazaKlientow.remove(klient); //Usuwamy klienta z listy, nie zapisze siê w pliku
 }
