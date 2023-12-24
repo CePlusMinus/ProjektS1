@@ -11,6 +11,22 @@ public:
 	BazaDanych() {
 		if (!std::is_base_of<KlasaBazowa, T>::value)
 			throw "Nie można utworzyć bazy danych z klasy, która nie implementuje \"KlasaBazowa\"!";
+
+		std::string path = typeid(T).name();
+		path += ".txt";
+		std::ifstream input(path);
+
+		std::string in;
+		while (!input.eof()) {
+			getline(input, in);
+
+			if (in.empty())
+				break;
+
+			save(T::deserialize(in));
+		}
+
+		input.close();
 	}
 
 
@@ -27,7 +43,7 @@ public:
 			if (baza.empty())
 				entity.setId(1);
 			else
-				entity.setId(baza.rbegin()->first);
+				entity.setId(baza.rbegin()->first + 1);
 		}
 
 		baza.insert({ entity.getId(), entity });
@@ -44,7 +60,7 @@ public:
 		std::ofstream output(path);
 
 		for (auto it = baza.begin(); it != baza.end(); ++it) {
-			output << it->second.toString();
+			output << it -> second.serialize() << std::endl;
 		}
 
 		output.close();

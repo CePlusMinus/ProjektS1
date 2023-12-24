@@ -24,12 +24,39 @@
     <ClCompile Include="KlasaBazowa.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BazaDanych.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mieszkanie.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ProjektS1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Zamowienie.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="includes\Klient.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="includes\KlasaBazowa.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\BazaDanych.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Mieszkanie.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Zamowienie.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="includes\Utils.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

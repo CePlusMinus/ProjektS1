@@ -7,8 +7,12 @@ int main()
 {
 	std::setlocale(LC_ALL, "Polish.UTF-8");
 
+	//UWAGA: Ten kod zakłada, że w pliku "class Klient.txt" jest linijka, w której jest klient o id 21! np.: 21;Marco;Polo
+
 	Klient klient("Grzegorz", "Brzęczyszczykiewicz");
 	BazaDanych<Klient> bazaKlientow; //Obiekt, zarządzający listą obiektów danego typu
+
+	std::cout << bazaKlientow.getById(21).toString() << "\n";
 
 	std::cout << klient.toString() << "\n";
 
@@ -18,7 +22,13 @@ int main()
 	klient.setNazwisko("Gawłowski");
 
 	//Zmieniliśmy dane w kliencie, ale w liście też się zmieni bo tam mamy referencję do obiektu klient
-	std::cout << bazaKlientow.getById(1).toString() << "\n";
+	std::cout << bazaKlientow.getById(22).toString() << "\n";
 
-	bazaKlientow.remove(klient); //Usuwamy klienta z listy, nie zapisze się w pliku
+	//bazaKlientow.remove(klient); //Usuwamy klienta z listy, nie zapisze się w pliku
+
+	Klient& zeStringa = Klient::deserialize("20;Michael;De Santa"); //Obiekty pobrane z metody 'deserialize' MUSIMY traktować jako referencje!
+	bazaKlientow.save(zeStringa);
+
+	std::cout << klient.serialize() << "\n";
+	std::cout << zeStringa.toString();
 }

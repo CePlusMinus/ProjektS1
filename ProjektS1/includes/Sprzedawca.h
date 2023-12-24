@@ -21,5 +21,8 @@ public:
 	void setEmail(std::string nowyEmail);
 	void setNumer(std::string nowyNumer);
 
-	std::string toString();
+	std::string toString() override;
+	std::string serialize() override;
+
+	static Sprzedawca& deserialize(std::string input);
 };

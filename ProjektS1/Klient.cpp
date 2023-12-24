@@ -1,4 +1,5 @@
 ﻿#include "includes/Klient.h"
+#include "includes/Utils.h"
 
 std::string Klient::getImie() const{
 	return imie;
@@ -33,4 +34,17 @@ std::string Klient::toString() {
 	std::string wynik = "Klient[ID: " + idString + ", Imię: " + imie + ", Nazwisko: " + nazwisko + "]";
 
 	return wynik;
+}
+
+std::string Klient::serialize() {
+	return std::to_string(id) + ';' + imie + ';' + nazwisko;
+}
+
+Klient& Klient::deserialize(std::string input) {
+	std::vector<std::string> parsed = Utils::tokenizeString(input, ';');
+
+	Klient* klient = new Klient(parsed[1], parsed[2]);
+	klient->setId(stol(parsed[0]));
+
+	return *klient;
 }
