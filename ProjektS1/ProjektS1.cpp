@@ -30,5 +30,17 @@ int main()
 	bazaKlientow.save(zeStringa);
 
 	std::cout << klient.serialize() << "\n";
-	std::cout << zeStringa.toString();
+	std::cout << zeStringa.toString() << "\n";
+
+	/*
+	std::vector<const Klient> wszyscy = bazaKlientow.getCurrentAllByValue(); Zwraca aktualny stan bazy jako STAŁE WARTOŚCI, nie można modyfikować obiektów w liście
+	wszyscy[0].setImie("Michał"); //Błędny kod, nie można zmieniać zawartości obiektów z tej listy
+	Jest to tak zrobione dlatego, że w bazie danych te obiekty by się nie aktualizowały, bo wektora nie można stworzyć dla referencji
+	*/
+
+	//Metodę "getCurrentAllByValue" najlepiej używajmy tylko do wypisywania wszystkich klientów w menu, bo nie można zmieniać danych klientów w tej liście którą zwraca
+	std::cout << "WYPISANIE WSZYSTKICH W BAZIE \n \n";
+	for (Klient k : bazaKlientow.getCurrentAllByValue()) {
+		std::cout << k.toString() << "\n";
+	}
 }

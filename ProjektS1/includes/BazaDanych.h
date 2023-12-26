@@ -2,6 +2,7 @@
 #include <map>
 #include "KlasaBazowa.h"
 #include <fstream>
+#include <vector>
 template <typename T>
 class BazaDanych
 {
@@ -53,14 +54,24 @@ public:
 		baza.erase(entity.getId());
 	}
 
+	std::vector<const T> getCurrentAllByValue() {
+		std::vector<const T> result;
+
+		for (auto it : baza) {
+			result.push_back(it.second);
+		}
+
+		return result;
+	}
+
 	~BazaDanych() {
 		std::string path = typeid(T).name();
 		path += ".txt";
 
 		std::ofstream output(path);
 
-		for (auto it = baza.begin(); it != baza.end(); ++it) {
-			output << it -> second.serialize() << std::endl;
+		for (auto it : baza) {
+			output << it.second.serialize() << std::endl;
 		}
 
 		output.close();
