@@ -54,8 +54,8 @@ public:
 		baza.erase(entity.getId());
 	}
 
-	std::vector<const T> getCurrentAllByValue() {
-		std::vector<const T> result;
+	std::vector<T> getCurrentAllByValue() {
+		std::vector<T> result;
 
 		for (auto it : baza) {
 			result.push_back(it.second);
