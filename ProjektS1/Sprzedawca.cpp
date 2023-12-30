@@ -19,39 +19,36 @@ std::string Sprzedawca::getNumer()const
 	return numer;
 }
 void Sprzedawca::setImie(std::string noweImie) {
-	if (noweImie.length() < 1)
-		throw "Imiê sprzedawcy nie mo¿e byæ pustym napisem!";
-	else
+	if (validate(noweImie, std::regex("^[A - Z][a - z] + $")))
 		imie = noweImie;
+	else
+		throw "Niepoprawne imiê sprzedawcy";
 }
 
 void Sprzedawca::setNazwisko(std::string noweNazwisko) {
-	if (noweNazwisko.length() < 1)
-		throw "Imiê sprzedawcy nie mo¿e byæ pustym napisem!";
+	if (validate(noweNazwisko, std::regex("^[A - Z][a - z] + $")))
+		imie = noweNazwisko;
 	else
-		nazwisko = noweNazwisko;
+		throw "Niepoprawne imiê sprzedawcy";
 }
+
 
 void Sprzedawca::setEmail(std::string nowyEmail)
 {
 	std::regex wzorEmail("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$");
 	if (std::regex_match(nowyEmail, wzorEmail))
-	{
 		email = nowyEmail;
-	}
 	else
-	{
-		std::cout << "Niepoprawny email";
-	}
+		throw "Niepoprawny email";
 		
 }
 
 void Sprzedawca::setNumer(std::string nowyNumer)
 {
-	if (nowyNumer.length() < 1)
-		throw "Numer nie moze byc pustym napisem!";
-	else
+	if (validate(nowyNumer,std::regex("^[0-9]+$")))
 		numer = nowyNumer;
+	else
+		throw "Niepoprawny numer";
 }
 
 Sprzedawca::Sprzedawca(std::string imie, std::string naziwsko, std::string email, std::string numer){
