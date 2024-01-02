@@ -10,3 +10,7 @@ void KlasaBazowa::setId(int noweId) {
 	else
 		id = noweId;
 }
+
+bool KlasaBazowa::validate(std::string input, std::regex pattern) {
+	return std::regex_match(input, pattern);
+}

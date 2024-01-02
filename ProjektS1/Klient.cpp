@@ -9,17 +9,17 @@ std::string Klient::getNazwisko() const{
 }
 
 void Klient::setImie(std::string noweImie) {
-	if (noweImie.length() < 1)
-		throw "Imię klienta nie może być pustym napisem!";
-	else
+	if (validate(noweImie, std::regex("^[A-Z][a-z]+$")))
 		imie = noweImie;
+	else
+		throw "Niepoprawne imię klienta";
 }
 
 void Klient::setNazwisko(std::string noweNazwisko) {
-	if (noweNazwisko.length() < 1)
-		throw "Nazwisko klienta nie może być pustym napisem!";
-	else
+	if (validate(noweNazwisko, std::regex("^[A-Z][a-z]+$")))
 		nazwisko = noweNazwisko;
+	else
+		throw "Niepoprawne nazwisko klienta";
 }
 
 Klient::Klient(std::string imie, std::string nazwisko) {

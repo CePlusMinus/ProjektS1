@@ -6,7 +6,7 @@ int main()
 {
 	std::setlocale(LC_ALL, "Polish.UTF-8");
 
-	Klient klient("Grzegorz", "Brzęczyszczykiewicz");
+	Klient klient("Grzegorz", "Brzeczyszczykiewicz");
 
 	//Przykład polimorfizmu: możemy uznać, że "Klient" to jakby się zastanowić odmiana "KlasaBazowa", więc tak możemy go traktować
 	KlasaBazowa* baza = &klient;
