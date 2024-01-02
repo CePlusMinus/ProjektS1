@@ -1,60 +1,131 @@
 ﻿#include "includes/Zamowienie.h"
+#include <iostream>
 
-Zamowienie::Zamowienie(std::string id_mieszkania, std::string id_sprzedawcy, std::string id_klienta, std::string zamowione)
+class Zamowienie
 {
-    setMieszkanie(id_mieszkania);
-    setSprzedawca(id_sprzedawcy);
-    setKlient(id_klienta);
-    setZamowione(zamowione);
-}
+private:
+    long id_mieszkania;
+    long id_sprzedawcy;
+    long id_klienta;
+    StatusZamowienia status_zamowienia;
 
-std::string Zamowienie::getMieszkanie() const
-{
-    return id_mieszkania;
-}
+public:
+    enum class StatusZamowienia
+    {
+        DOSTEPNE,
+        W_TRAKCIE,
+        ZAMOWIONE
+    };
 
-std::string Zamowienie::getSprzedawca() const
-{
-    return id_sprzedawcy;
-}
+    Zamowienie(long id_mieszkania, long id_sprzedawcy, long id_klienta, StatusZamowienia status)
+        : id_mieszkania(id_mieszkania), id_sprzedawcy(id_sprzedawcy), id_klienta(id_klienta), status_zamowienia(status) {}
 
-std::string Zamowienie::getKlient() const
-{
-    return id_klienta;
-}
+    long getMieszkanie() const 
+    {
+        return id_mieszkania;
+    }
 
-std::string Zamowienie::getZamowione() const
-{
-    return zamowione;
-}
+    long getSprzedawca() const 
+    {
+        return id_sprzedawcy;
+    }
 
-void Zamowienie::setMieszkanie(std::string p_mieszkanie)
-{
-    // Tu może być dodatkowa walidacja, jeśli jest potrzebna
-    id_mieszkania = p_mieszkanie;
-}
+    long getKlient() const 
+    {
+        return id_klienta;
+    }
 
-void Zamowienie::setSprzedawca(std::string p_sprzedawca)
-{
-    // Tu może być dodatkowa walidacja, jeśli jest potrzebna
-    id_sprzedawcy = p_sprzedawca;
-}
+    StatusZamowienia getStatusZamowienia() const 
+    {
+        return status_zamowienia;
+    }
 
-void Zamowienie::setKlient(std::string p_klient)
-{
-    // Tu może być dodatkowa walidacja, jeśli jest potrzebna
-    id_klienta = p_klient;
-}
+    void setMieszkanie(long p_mieszkanie) 
+    {
+        id_mieszkania = p_mieszkanie;
+    }
 
-void Zamowienie::setZamowione(std::string p_zamowione)
-{
-    // Tu może być dodatkowa walidacja, jeśli jest potrzebna
-    zamowione = p_zamowione;
-}
+    void setSprzedawca(long p_sprzedawca) 
+    {
+        id_sprzedawcy = p_sprzedawca;
+    }
 
-std::string Zamowienie::toString() const
-{
-    std::string idString = id == -1 ? "[NIE USTAWIONO]" : std::to_string(id);
-    std::string wynik = "Zamowienie[ID: " + idString + ", ID mieszkania" + id_mieszkania + ", ID sprzedawcy" + id_sprzedawcy + ", ID klienta" + id_klienta + ", Zamówiony" + zamowione + "]";
-    return wynik;
-}
+    void setKlient(long p_klient) 
+    {
+        id_klienta = p_klient;
+    }
+
+    void setStatusZamowienia(StatusZamowienia status) 
+    {
+        status_zamowienia = status;
+    }
+
+    std::string toString() const 
+    {
+        std::string idString = id == -1 ? "[NIE USTAWIONO]" : std::to_string(id);
+        std::string wynik = "Zamowienie[ID:" + idString + ",
+            ID mieszkania: " + std::to_string(id_mieszkania) +
+            ", ID sprzedawcy: " + std::to_string(id_sprzedawcy) +
+            ", ID klienta: " + std::to_string(id_klienta) +
+            ", Status zamowienia: ";
+
+        switch (status_zamowienia) 
+        {
+        case StatusZamowienia::DOSTEPNE:
+            wynik += "DOSTEPNE";
+            break;
+        case StatusZamowienia::W_TRAKCIE:
+            wynik += "W_TRAKCIE";
+            break;
+        case StatusZamowienia::ZAMOWIONE:
+            wynik += "ZAMOWIONE";
+            break;
+        }
+
+        wynik += "]";
+        return wynik;
+    }
+    std::string Zamowienie::serialize() const {
+        std::string statusStr;
+        switch (status_zamowienia) {
+        case StatusZamowienia::DOSTEPNE:
+            statusStr = "DOSTEPNE";
+            break;
+        case StatusZamowienia::W_TRAKCIE:
+            statusStr = "W_TRAKCIE";
+            break;
+        case StatusZamowienia::ZAMOWIONE:
+            statusStr = "ZAMOWIONE";
+            break;
+        }
+
+        return std::to_string(id) + ";" + std::to_string(id_mieszkania) + ';' + std::to_string(id_sprzedawcy) + ';' + std::to_string(id_klienta) + ';' + statusStr;
+    }
+
+    Zamowienie& Zamowienie::deserialize(std::string input) 
+    {
+        std::vector<std::string> parsed = Utils::tokenizeString(input, ';');
+
+        long id = stol(parsed[0]);
+        long mieszkanieId = stol(parsed[1]);
+        long sprzedawcaId = stol(parsed[2]);
+        long klientId = stol(parsed[3]);
+        StatusZamowienia status = StatusZamowienia::DOSTEPNE; 
+
+        // Przetwarzanie statusu zamówienia
+        if (parsed.size() > 3) {
+            std::string statusStr = parsed[4];
+            if (statusStr == "W_TRAKCIE") {
+                status = StatusZamowienia::W_TRAKCIE;
+            }
+            else if (statusStr == "ZAMOWIONE") {
+                status = StatusZamowienia::ZAMOWIONE;
+            }
+        }
+
+        Zamowienie* zamowienie = new Zamowienie(mieszkanieId, sprzedawcaId, klientId, status);
+        zamowienie->setId(id);
+
+        return *zamowienie;
+    }
+};

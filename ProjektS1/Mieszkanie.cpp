@@ -1,4 +1,6 @@
 ﻿#include "includes/Mieszkanie.h"
+#include <regex>
+#include <iostream>
 
 std::string Mieszkanie::getUlica() const
 {
@@ -53,18 +55,32 @@ void Mieszkanie::setCzyWyposazenie(bool p_czywyposazenie)
 
 void Mieszkanie::setWielkoscMieszkania(double p_wielkoscmieszkania)
 {
-    if (p_wielkoscmieszkania <= 0)
-        throw "Mieszkanie musi mieć określoną wielkość";
-    else
+    std::string wielkoscString = std::to_string(p_wielkoscmieszkania);
+    std::regex wzor("^[0-9]+\\.[0-9]{4}$");
+
+    if (std::regex_match(wielkoscString, wzor))
+    {
         wielkosc_mieszkania = p_wielkoscmieszkania;
+    }
+    else
+    {
+        std::cout << "Nieprawidłowy zapis wielkości";
+    }
 }
 
-void Mieszkanie::setCenaMieszkania(double p_cenamieszkania)
-{
-    if (p_cenamieszkania <= 0)
-        throw "Mieszkanie musi mieć swoją cenę";
-    else
+void Mieszkanie::setCenaMieszkania(double p_cenamieszkania) {
+    std::string cenaString = std::to_string(p_cenamieszkania);
+
+    std::regex wzorCeny("^\\d+(\\.\\d{1,2})?$");
+
+    if (std::regex_match(cenaString, wzorCeny))
+    {
         cena_mieszkania = p_cenamieszkania;
+    }
+    else
+    {
+        std::cout << "Nieprawidłowy zapis ceny\n";
+    }
 }
 
 void Mieszkanie::setWlasciciel(long p_wlasciciel)
@@ -91,4 +107,17 @@ std::string Mieszkanie::toString()
     std::string wynik = "Mieszkanie[ID: " + idString + ", Ulica: " + ulica + ", Numer mieszkania: " + numer_mieszkania + ", Czy wyposażone: " + (czy_wyposazenie ? "TAK" : "NIE") + ", Wielkość mieszkania: " + std::to_string(wielkosc_mieszkania) + ", Cena mieszkania: " + std::to_string(cena_mieszkania) + " Właściciel mieszkania: " + std::to_string(wlasciciel) + "]";
 
     return wynik;
+}
+
+std::string Mieszkanie::serialize() {
+    return std::to_string(id) + ';' + ulica + ";" + numer_mieszkania + ';' + (czy_wyposazenie ? '1' : '0') + ';' + std::to_string(wielkosc_mieszkania) + ';' + std::to_string(cena_mieszkania) + ';' + std::to_string(wlasciciel);
+}
+
+Mieszkanie& Mieszkanie::deserialize(std::string input) {
+    std::vector<std::string> parsed = Utils::tokenizeString(input, ';');
+
+    Mieszkanie* mieszkanie = new Mieszkanie(parsed[1], parsed[2], stoi(parsed[3]) - 0, stod(parsed[4]), stod(parsed[5]), stol(parsed[6]));
+    mieszkanie->setId(stol(parsed[0]));
+
+    return *mieszkanie;
 }
