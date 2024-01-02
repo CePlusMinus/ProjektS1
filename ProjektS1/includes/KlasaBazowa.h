@@ -15,5 +15,8 @@ public:
 	bool validate(std::string input, std::regex pattern);
 
 	//Metoda abstrakcyjna (wirtualna), klasy które dziedziczą po "KlasaBazowa" muszą ją zaimplementować, a ona sama domyślnie nie ma implementacji
-	virtual std::string toString() = 0;
+	virtual std::string toString()  = 0;
+
+	//Metoda do zamiany klasy na format, który damy radę odczytać z pliku
+	virtual std::string serialize() = 0;
 };

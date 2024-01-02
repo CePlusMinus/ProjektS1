@@ -25,7 +25,10 @@ public:
 	void setCenaMieszkania(double p_cenamieszkania);
 	void setWlasciciel(long p_wlasciciel);
 
-	std::string toString();
+	std::string toString() override;
+	std::string serialize() override;
+
+	static Mieszkanie& deserialize(std::string input);
 };
 
 

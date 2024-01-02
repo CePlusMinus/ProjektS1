@@ -128,19 +128,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BazaDanych.cpp" />
     <ClCompile Include="Mieszkanie.cpp" />
     <ClCompile Include="ProjektS1.cpp" />
     <ClCompile Include="KlasaBazowa.cpp" />
     <ClCompile Include="Klient.cpp" />
     <ClCompile Include="Sprzedawca.cpp" />
+    <ClCompile Include="Utils.cpp" />
     <ClCompile Include="Zamowienie.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="includes\BazaDanych.h" />
     <ClInclude Include="includes\Klient.h" />
     <ClInclude Include="includes\KlasaBazowa.h" />
     <ClInclude Include="includes\Mieszkanie.h" />
     <ClInclude Include="includes\Sprzedawca.h" />
     <ClInclude Include="includes\Zamowienie.h" />
+    <ClInclude Include="includes\Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

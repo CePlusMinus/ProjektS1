@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include "includes/Sprzedawca.h"
 #include <regex>
+#include "includes/Utils.h"
 
 std::string Sprzedawca::getImie() const {
 	return imie;
@@ -63,5 +64,18 @@ std::string Sprzedawca::toString() {
 	std::string wynik = "Sprzedawca[ID: " + idString + ", Imię: " + imie + ", Nazwisko: " + nazwisko + ", Email: "+email+ ", Numer telefonu:"+ numer+"]";
 
 	return wynik;
+}
+
+std::string Sprzedawca::serialize() {
+	return std::to_string(id) + ';' + imie + ";" + nazwisko + ';' + email + ';' + numer;
+}
+
+Sprzedawca& Sprzedawca::deserialize(std::string input) {
+	std::vector<std::string> parsed = Utils::tokenizeString(input, ';');
+
+	Sprzedawca* sprzedawca = new Sprzedawca(parsed[1], parsed[2], parsed[3], parsed[4]);
+	sprzedawca->setId(stol(parsed[0]));
+
+	return *sprzedawca;
 }
 

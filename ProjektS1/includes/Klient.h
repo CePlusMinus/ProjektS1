@@ -13,6 +13,9 @@ public:
 	void setImie(std::string noweImie);
 	void setNazwisko(std::string noweNazwisko);
 
-	std::string toString();
+	std::string toString() override;
+	std::string serialize() override;
+
+	static Klient& deserialize(std::string input);
 };
 
