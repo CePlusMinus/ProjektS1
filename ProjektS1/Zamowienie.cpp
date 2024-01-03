@@ -1,70 +1,54 @@
 ﻿#include "includes/Zamowienie.h"
 #include <iostream>
+#include "includes/Utils"
 
-class Zamowienie
-{
-private:
-    long id_mieszkania;
-    long id_sprzedawcy;
-    long id_klienta;
-    StatusZamowienia status_zamowienia;
-
-public:
-    enum class StatusZamowienia
-    {
-        DOSTEPNE,
-        W_TRAKCIE,
-        ZAMOWIONE
-    };
-
-    Zamowienie(long id_mieszkania, long id_sprzedawcy, long id_klienta, StatusZamowienia status)
+    Zamowienie::Zamowienie(long id_mieszkania, long id_sprzedawcy, long id_klienta, StatusZamowienia status)
         : id_mieszkania(id_mieszkania), id_sprzedawcy(id_sprzedawcy), id_klienta(id_klienta), status_zamowienia(status) {}
 
-    long getMieszkanie() const 
+    long Zamowienie::getMieszkanie() const 
     {
         return id_mieszkania;
     }
 
-    long getSprzedawca() const 
+    long Zamowienie::getSprzedawca() const
     {
         return id_sprzedawcy;
     }
 
-    long getKlient() const 
+    long Zamowienie::getKlient() const
     {
         return id_klienta;
     }
 
-    StatusZamowienia getStatusZamowienia() const 
+    Zamowienie::StatusZamowienia Zamowienie::getStatusZamowienia() const
     {
         return status_zamowienia;
     }
 
-    void setMieszkanie(long p_mieszkanie) 
+    void Zamowienie::setMieszkanie(long p_mieszkanie)
     {
         id_mieszkania = p_mieszkanie;
     }
 
-    void setSprzedawca(long p_sprzedawca) 
+    void Zamowienie::setSprzedawca(long p_sprzedawca)
     {
         id_sprzedawcy = p_sprzedawca;
     }
 
-    void setKlient(long p_klient) 
+    void Zamowienie::setKlient(long p_klient)
     {
         id_klienta = p_klient;
     }
 
-    void setStatusZamowienia(StatusZamowienia status) 
+    void Zamowienie::setStatusZamowienia(Zamowienie::StatusZamowienia status)
     {
         status_zamowienia = status;
     }
 
-    std::string toString() const 
+    std::string Zamowienie::toString() const
     {
         std::string idString = id == -1 ? "[NIE USTAWIONO]" : std::to_string(id);
-        std::string wynik = "Zamowienie[ID:" + idString + ",
-            ID mieszkania: " + std::to_string(id_mieszkania) +
+        std::string wynik = "Zamowienie[ID:" + idString + ", ID mieszkania: " + std::to_string(id_mieszkania) +
             ", ID sprzedawcy: " + std::to_string(id_sprzedawcy) +
             ", ID klienta: " + std::to_string(id_klienta) +
             ", Status zamowienia: ";
@@ -128,4 +112,3 @@ public:
 
         return *zamowienie;
     }
-};
