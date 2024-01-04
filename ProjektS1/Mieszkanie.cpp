@@ -1,5 +1,6 @@
 ﻿#include "includes/Mieszkanie.h"
 #include "includes/Utils.h"
+#include <regex>
 
 std::string Mieszkanie::getUlica() const
 {
@@ -54,18 +55,32 @@ void Mieszkanie::setCzyWyposazenie(bool p_czywyposazenie)
 
 void Mieszkanie::setWielkoscMieszkania(double p_wielkoscmieszkania)
 {
-    if (p_wielkoscmieszkania <= 0)
-        throw "Mieszkanie musi mieć określoną wielkość";
-    else
+    std::string wielkoscString = std::to_string(p_wielkoscmieszkania);
+    std::regex wzor("^[0-9]+\\.[0-9]{4}$");
+
+    if (std::regex_match(wielkoscString, wzor))
+    {
         wielkosc_mieszkania = p_wielkoscmieszkania;
+    }
+    else
+    {
+        throw "Nieprawidłowy zapis wielkości";
+    }
 }
 
-void Mieszkanie::setCenaMieszkania(double p_cenamieszkania)
-{
-    if (p_cenamieszkania <= 0)
-        throw "Mieszkanie musi mieć swoją cenę";
-    else
+void Mieszkanie::setCenaMieszkania(double p_cenamieszkania) {
+    std::string cenaString = std::to_string(p_cenamieszkania);
+
+    std::regex wzorCeny("^\\d+(\\.\\d{1,2})?$");
+
+    if (std::regex_match(cenaString, wzorCeny))
+    {
         cena_mieszkania = p_cenamieszkania;
+    }
+    else
+    {
+        throw "Nieprawidłowy zapis ceny\n";
+    }
 }
 
 void Mieszkanie::setWlasciciel(long p_wlasciciel)
