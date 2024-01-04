@@ -45,7 +45,7 @@
         status_zamowienia = status;
     }
 
-    std::string Zamowienie::toString() const
+    std::string Zamowienie::toString()
     {
         std::string idString = id == -1 ? "[NIE USTAWIONO]" : std::to_string(id);
         std::string wynik = "Zamowienie[ID:" + idString + ", ID mieszkania: " + std::to_string(id_mieszkania) +

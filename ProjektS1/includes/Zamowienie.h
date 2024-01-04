@@ -11,24 +11,24 @@ enum class StatusZamowienia
     ZAMOWIONE
 };
 private:
-    std::string id_mieszkania;
-    std::string id_sprzedawcy;
-    std::string id_klienta;
+    long id_mieszkania;
+    long id_sprzedawcy;
+    long id_klienta;
     StatusZamowienia status_zamowienia;
 
 public:
-    Zamowienie(std::string id_mieszkania, std::string id_sprzedawcy, std::string id_klienta, StatusZamowienia status_zamowienia);
+    Zamowienie(long id_mieszkania, long id_sprzedawcy, long id_klienta, StatusZamowienia status_zamowienia);
 
-    std::string getMieszkanie() const;
-    std::string getSprzedawca() const;
-    std::string getKlient() const; 
-    std::string getStatusZamowienia() const;
-    void setMieszkanie(std::string p_mieszkanie);
-    void setSprzedawca(std::string p_sprzedawca);
-    void setKlient(std::string p_klient); 
+    long getMieszkanie() const;
+    long getSprzedawca() const;
+    long getKlient() const; 
+    StatusZamowienia getStatusZamowienia() const;
+    void setMieszkanie(long p_mieszkanie);
+    void setSprzedawca(long p_sprzedawca);
+    void setKlient(long p_klient); 
     void setStatusZamowienia(StatusZamowienia status);
 
-    std::string toString() const; 
+    std::string toString(); 
 
     std::string serialize() override;
     static Zamowienie& deserialize(std::string input);
