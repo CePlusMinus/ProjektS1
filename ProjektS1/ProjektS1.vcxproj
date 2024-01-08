@@ -129,6 +129,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BazaDanych.cpp" />
+    <ClCompile Include="Logger.cpp" />
     <ClCompile Include="Mieszkanie.cpp" />
     <ClCompile Include="ProjektS1.cpp" />
     <ClCompile Include="KlasaBazowa.cpp" />
@@ -141,6 +142,7 @@
     <ClInclude Include="includes\BazaDanych.h" />
     <ClInclude Include="includes\Klient.h" />
     <ClInclude Include="includes\KlasaBazowa.h" />
+    <ClInclude Include="includes\Logger.h" />
     <ClInclude Include="includes\Mieszkanie.h" />
     <ClInclude Include="includes\Sprzedawca.h" />
     <ClInclude Include="includes\Zamowienie.h" />

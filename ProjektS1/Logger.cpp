@@ -1,4 +1,5 @@
 #include "includes/Logger.h"
+#include <fstream>
 
 std::string Logger::raport = "";
 
