@@ -23,7 +23,7 @@ void Wyswietl_MenuGlowne()
 	cout << "Menu Główne:" << endl;
 	cout << "[1] - Wyświetl Kategorie Z Bazy Dannych" << endl;
     cout << "[2] - Operacje na zamówieniach" << endl;
-	cout << "[3] - Wyjscie" << endl;
+	cout << "[3] - Wyjście" << endl;
 	cout << "Wybierz jedną z opcji podanych [1-3]" << endl << endl;
 }
 
@@ -32,13 +32,13 @@ void MenuKategorie_z_bazy_dannych()
 	int wyborOpcji;
 
     do {
-        std::cout << "Opcje kategorii do odczytu" << std::endl;
-        std::cout << "[1] - Wyświetl Klientów" << std::endl;
-        std::cout << "[2] - Wyświetl Sprzedawców" << std::endl;
-        std::cout << "[3] - Wyświetl Mieszkania" << std::endl;
+        cout << "Opcje kategorii do odczytu" << std::endl;
+        cout << "[1] - Wyświetl Klientów" << std::endl;
+        cout << "[2] - Wyświetl Sprzedawców" << std::endl;
+        cout << "[3] - Wyświetl Mieszkania" << std::endl;
         cout << "[4] - Wyświetl Zamówienia" << endl;
-        std::cout << "[5] - Powrót do Menu Głównego" << std::endl;
-        std::cout << "Wybierz jedną z opcji (1-5): ";
+        cout << "[5] - Powrót do Menu Głównego" << std::endl;
+        cout << "Wybierz jedną z opcji (1-5): ";
 
         while (!(std::cin >> wyborOpcji)) 
         {
@@ -122,14 +122,12 @@ void MenuZamownien()
             long IdMieszkania, IdSprzedawcy, IdKlienta;
             cout << "Dodawanie Zamówienia" << endl;
             cout<< "Podaj Status Zamówienia" <<endl;
-            cout << "Podaj Numer od 0 do 2" << endl << "[0]-W Trakcie Zamówienia" << "\n [1]-Zamówione" << endl;
-            cin >> cyfraZamowienia;
             do {
-                cout << "Podaj numer w zakresie" << endl;
+                cout << "Podaj Numer od 0 do 2" << endl << "[0]-W Trakcie Zamówienia" << "\n [1]-Zamówione" << endl;
                 cin >> cyfraZamowienia;
-            } while (cyfraZamowienia != 0 || cyfraZamowienia != 1);
+            } while (cyfraZamowienia != 0 && cyfraZamowienia != 1);
 
-            StatusZamowienia status = (StatusZamowienia)cyfraZamowienia;
+            Zamowienie::StatusZamowienia status = (Zamowienie::StatusZamowienia)cyfraZamowienia;
 
             cout << "Podaj Id Mieszkania" << endl;
             cin >> IdMieszkania;
@@ -139,13 +137,29 @@ void MenuZamownien()
             cin >> IdKlienta;
 
             Zamowienie* zamowienie = new Zamowienie(IdMieszkania, IdSprzedawcy, IdKlienta, status);
-            Baza_Zamowienia.save(zamowienie);
+            Baza_Zamowienia.save(*zamowienie);
                 cout << "Dodano nowe zamówienie"<<endl;
             break;
         }
         case 2:
         {
-            cout << "Usuwanie Zamównia" << endl;
+            &Zamowienie zamowienie;
+            do {
+                cout << "Usuwanie Zamówienia" << endl;
+                long IdZamowienia;
+                cout << "Podaj Id Zamówienia, które chcesz usunąć" << endl;
+                cin >> IdZamowienia;
+                try {
+                    zamowienie= Baza_Zamowienia.getById(IdZamowienia);
+                    break;
+                }
+                catch{
+                    cout<<"Takiego zamówienia nie ma w bazie, podaj poprawne ID"
+                }
+            } while (true);
+            Baza_Zamowienia.remove(zamowienie);
+            cout << "Zamowienie zostało usunięte" << endl;
+            break;
         }
         case 3:
             break;
