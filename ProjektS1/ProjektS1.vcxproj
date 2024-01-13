@@ -144,6 +144,7 @@
     <ClInclude Include="includes\Klient.h" />
     <ClInclude Include="includes\KlasaBazowa.h" />
     <ClInclude Include="includes\Logger.h" />
+    <ClInclude Include="includes\Menu.h" />
     <ClInclude Include="includes\Mieszkanie.h" />
     <ClInclude Include="includes\Sprzedawca.h" />
     <ClInclude Include="includes\Zamowienie.h" />
