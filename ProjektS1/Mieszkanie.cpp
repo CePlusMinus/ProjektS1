@@ -56,7 +56,7 @@ void Mieszkanie::setCzyWyposazenie(bool p_czywyposazenie)
 void Mieszkanie::setWielkoscMieszkania(double p_wielkoscmieszkania)
 {
     std::string wielkoscString = std::to_string(p_wielkoscmieszkania);
-    std::regex wzor("^[0-9]+\\.[0-9]{4}$");
+    std::regex wzor("^[0-9]+(\\.[0-9]{0,4})?$");
 
     if (std::regex_match(wielkoscString, wzor))
     {
