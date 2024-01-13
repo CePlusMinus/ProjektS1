@@ -10,14 +10,14 @@ std::string Klient::getNazwisko() const{
 }
 
 void Klient::setImie(std::string noweImie) {
-	if (validate(noweImie, std::regex("^[A-Z][a-z]+$")))
+	if (validate(noweImie, std::regex("^[A-ZĄĆĘŁŃÓŚŹŻ][a-ząćęłńóśźż]+$")))
 		imie = noweImie;
 	else
 		throw "Niepoprawne imię klienta";
 }
 
 void Klient::setNazwisko(std::string noweNazwisko) {
-	if (validate(noweNazwisko, std::regex("^[A-Z][a-z]+$")))
+	if (validate(noweNazwisko, std::regex("^[A - ZĄĆĘŁŃÓŚŹŻ][a - ząćęłńóśźż] + $")))
 		nazwisko = noweNazwisko;
 	else
 		throw "Niepoprawne nazwisko klienta";
