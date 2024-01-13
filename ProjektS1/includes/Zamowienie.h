@@ -6,7 +6,6 @@ class Zamowienie : public KlasaBazowa
 public:
 enum class StatusZamowienia
 {
-    DOSTEPNE,
     W_TRAKCIE,
     ZAMOWIONE
 };

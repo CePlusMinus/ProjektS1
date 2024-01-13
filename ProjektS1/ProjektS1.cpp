@@ -21,11 +21,7 @@ int main()
 	case 2:
 		MenuZamownien();
 	case 3:
-		//menuDodawanie_Zamowienia();
-	case 4:
-		menuUsuwanie_Zamowienia();
-	case 5:
-		//menuGenerowanie_Raprtu();
+		
 	case 6:
 		break;
 	default:

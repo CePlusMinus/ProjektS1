@@ -54,9 +54,6 @@
 
         switch (status_zamowienia) 
         {
-        case StatusZamowienia::DOSTEPNE:
-            wynik += "DOSTEPNE";
-            break;
         case StatusZamowienia::W_TRAKCIE:
             wynik += "W_TRAKCIE";
             break;
@@ -71,9 +68,6 @@
     std::string Zamowienie::serialize() {
         std::string statusStr;
         switch (status_zamowienia) {
-        case StatusZamowienia::DOSTEPNE:
-            statusStr = "DOSTEPNE";
-            break;
         case StatusZamowienia::W_TRAKCIE:
             statusStr = "W_TRAKCIE";
             break;
@@ -93,7 +87,7 @@
         long mieszkanieId = stol(parsed[1]);
         long sprzedawcaId = stol(parsed[2]);
         long klientId = stol(parsed[3]);
-        StatusZamowienia status = StatusZamowienia::DOSTEPNE; 
+        StatusZamowienia status;
 
         // Przetwarzanie statusu zamówienia
         if (parsed.size() > 3) {
