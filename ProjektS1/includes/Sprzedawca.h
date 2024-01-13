@@ -9,7 +9,7 @@ private:
 	std::string email;
 	std::string numer;
 public:
-	Sprzedawca(std::string imie, std::string naziwsko, std::string email, std::string numer);
+	Sprzedawca(std::string imie, std::string nazwisko, std::string email, std::string numer);
 
 	std::string getImie() const;
 	std::string getNazwisko()const;
