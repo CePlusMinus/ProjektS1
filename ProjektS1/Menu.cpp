@@ -143,21 +143,21 @@ void MenuZamownien()
         }
         case 2:
         {
-            &Zamowienie zamowienie;
+            cout << "Usuwanie Zamówienia" << endl;
             do {
-                cout << "Usuwanie Zamówienia" << endl;
                 long IdZamowienia;
                 cout << "Podaj Id Zamówienia, które chcesz usunąć" << endl;
                 cin >> IdZamowienia;
                 try {
-                    zamowienie= Baza_Zamowienia.getById(IdZamowienia);
+                    Zamowienie& zamowienie = Baza_Zamowienia.getById(IdZamowienia);
+                    Baza_Zamowienia.remove(zamowienie);
                     break;
                 }
-                catch{
-                    cout<<"Takiego zamówienia nie ma w bazie, podaj poprawne ID"
+                catch(...){
+                    cout << "Takiego zamówienia nie ma w bazie, podaj poprawne ID";
                 }
             } while (true);
-            Baza_Zamowienia.remove(zamowienie);
+            
             cout << "Zamowienie zostało usunięte" << endl;
             break;
         }
