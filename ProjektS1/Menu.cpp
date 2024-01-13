@@ -22,7 +22,7 @@ BazaDanych <Zamowienie> Baza_Zamowienia;
 void Wyswietl_MenuGlowne()
 {
 	cout << "Menu Główne:" << endl;
-	cout << "[1] - Wyświetl Kategorie Z Bazy Dannych" << endl;
+	cout << "[1] - Wyświetl Kategorie Z Bazy Danych" << endl;
     cout << "[2] - Operacje na zamówieniach" << endl;
 	cout << "[3] - Wyjście" << endl;
 	cout << "Wybierz jedną z opcji podanych [1-3]" << endl << endl;
@@ -84,7 +84,7 @@ void MenuKategorie_z_bazy_dannych()
 
         case 4:
         {
-            cout << "Wyswietlanie Listy Zamówień";
+            cout << "Wyswietlanie Listy Zamówień"<<endl;
 
             for (Zamowienie k : Baza_Zamowienia.getCurrentAllByValue()) {
                 std::cout << k.toString() << "\n";
@@ -125,7 +125,7 @@ void MenuOperacjenaZamownieniach()
             cout << "Dodawanie Zamówienia" << endl;
             cout<< "Podaj Status Zamówienia" <<endl;
             do {
-                cout << "Podaj Numer od 0 do 2" << endl << "[0]-W Trakcie Zamówienia" << "\n [1]-Zamówione" << endl;
+                cout << "Podaj numer od 0 do 1" << endl << "[0]-W Trakcie Zamówienia" << "\n [1]-Zamówione" << endl;
                 cin >> cyfraZamowienia;
             } while (cyfraZamowienia != 0 && cyfraZamowienia != 1);
 
@@ -141,7 +141,7 @@ void MenuOperacjenaZamownieniach()
             Zamowienie* zamowienie = new Zamowienie(IdMieszkania, IdSprzedawcy, IdKlienta, status);
             Baza_Zamowienia.save(*zamowienie);
                 cout << "Dodano nowe zamówienie"<<endl;
-                Logger::log("Dodano zamówienie po Id " + to_string(zamowienie->getId()));
+                Logger::log("Dodano zamówienie o Id " + to_string(zamowienie->getId()));
             break;
         }
         case 2:
@@ -153,12 +153,12 @@ void MenuOperacjenaZamownieniach()
                 cin >> IdZamowienia;
                 try {
                     Zamowienie& zamowienie = Baza_Zamowienia.getById(IdZamowienia);
-                    Logger::log("Usunieto zamówienie po Id " + to_string(IdZamowienia));
+                    Logger::log("Usunieto zamówienie o Id " + to_string(IdZamowienia));
                     Baza_Zamowienia.remove(zamowienie);
                     break;
                 }
                 catch(...){
-                    cout << "Takiego zamówienia nie ma w bazie, podaj poprawne ID";
+                    cout << "Takiego zamówienia nie ma w bazie, podaj poprawne ID"<<endl;
                 }
             } while (true);
             
@@ -171,13 +171,13 @@ void MenuOperacjenaZamownieniach()
             cout << "Zmiana statusu" << endl;
             do {
                 long IdZamowienia;
-                cout << "Podaj Id Zamówienia, które chcesz usunąć" << endl;
+                cout << "Podaj Id Zamówienia, którego status chcesz zmienić" << endl;
                 cin >> IdZamowienia;
                 try {
                     Zamowienie& zamowienie = Baza_Zamowienia.getById(IdZamowienia);
                     cout << "Podaj Status Zamówienia" << endl;
                     do {
-                        cout << "Podaj Numer od 0 do 2" << endl << "[0]-W Trakcie Zamówienia" << "\n [1]-Zamówione" << endl;
+                        cout << "Podaj Numer od 0 do 1" << endl << "[0]-W Trakcie Zamówienia" << "\n [1]-Zamówione" << endl;
                         cin >> cyfraZamowienia;
                     } while (cyfraZamowienia != 0 && cyfraZamowienia != 1);
 
@@ -188,7 +188,7 @@ void MenuOperacjenaZamownieniach()
                     break;
                 }
                 catch (...) {
-                    cout << "Takiego zamówienia nie ma w bazie, podaj poprawne ID";
+                    cout << "Takiego zamówienia nie ma w bazie, podaj poprawne ID"<<endl;
                 }
             } while (true);
 
@@ -199,7 +199,7 @@ void MenuOperacjenaZamownieniach()
             break;
         default:
         {
-            cout << "Podany numer nie ma swojego odzwierciedlenia w menu. Prosze wybierz numer w przedziale 1-4";
+            cout << "Podany numer nie ma swojego odzwierciedlenia w menu. Prosze wybierz numer w przedziale 1-4"<<endl;
             break;
         }
         }

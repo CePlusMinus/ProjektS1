@@ -1,4 +1,4 @@
-﻿#pragma once //nie wiem co to robi, ale Visual to dodaje z automatu więc niech zostanie
+﻿#pragma once
 #include <string>
 #include <regex>
 class KlasaBazowa
