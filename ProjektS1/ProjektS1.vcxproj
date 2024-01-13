@@ -130,6 +130,7 @@
   <ItemGroup>
     <ClCompile Include="BazaDanych.cpp" />
     <ClCompile Include="Logger.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Mieszkanie.cpp" />
     <ClCompile Include="ProjektS1.cpp" />
     <ClCompile Include="KlasaBazowa.cpp" />

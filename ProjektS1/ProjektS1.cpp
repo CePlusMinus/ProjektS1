@@ -10,7 +10,10 @@ int main()
 	std::setlocale(LC_ALL, "Polish.UTF-8");
 
 	Wyswietl_MenuGlowne();
-	int wyboropcji;
+	int wyboropcji = 0;
+
+	cin >> wyboropcji;
+
 	switch (wyboropcji)
 	{
 	case 1:
@@ -18,11 +21,11 @@ int main()
 	case 2:
 		MenuZamownien();
 	case 3:
-		menuDodawanie_Zamowienia();
+		//menuDodawanie_Zamowienia();
 	case 4:
 		menuUsuwanie_Zamowienia();
 	case 5:
-		menuGenerowanie_Raprtu();
+		//menuGenerowanie_Raprtu();
 	case 6:
 		break;
 	default:
