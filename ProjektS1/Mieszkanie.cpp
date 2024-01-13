@@ -55,29 +55,22 @@ void Mieszkanie::setCzyWyposazenie(bool p_czywyposazenie)
 
 void Mieszkanie::setWielkoscMieszkania(double p_wielkoscmieszkania)
 {
-    std::string wielkoscString = std::to_string(p_wielkoscmieszkania);
-    std::regex wzor("^[0-9]+(\\.[0-9]{0,4})?$");
-
-    if (std::regex_match(wielkoscString, wzor))
+    try
     {
         wielkosc_mieszkania = p_wielkoscmieszkania;
     }
-    else
+    catch (const std::invalid_argument&)
     {
         throw "Nieprawidłowy zapis wielkości";
     }
 }
 
 void Mieszkanie::setCenaMieszkania(double p_cenamieszkania) {
-    std::string cenaString = std::to_string(p_cenamieszkania);
-
-    std::regex wzorCeny("^\\d+(\\.\\d{1,2})?$");
-
-    if (std::regex_match(cenaString, wzorCeny))
+    try
     {
         cena_mieszkania = p_cenamieszkania;
     }
-    else
+    catch (const std::invalid_argument&)
     {
         throw "Nieprawidłowy zapis ceny\n";
     }
