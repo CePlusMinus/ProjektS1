@@ -17,7 +17,7 @@ void Klient::setImie(std::string noweImie) {
 }
 
 void Klient::setNazwisko(std::string noweNazwisko) {
-	if (validate(noweNazwisko, std::regex("^[A - ZĄĆĘŁŃÓŚŹŻ][a - ząćęłńóśźż] + $")))
+	if (validate(noweNazwisko, std::regex("^[A-ZĄĆĘŁŃÓŚŹŻ][a-ząćęłńóśźż]+$")))
 		nazwisko = noweNazwisko;
 	else
 		throw "Niepoprawne nazwisko klienta";
