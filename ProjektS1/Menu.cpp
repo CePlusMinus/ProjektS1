@@ -102,15 +102,16 @@ void MenuKategorie_z_bazy_dannych()
     } while (wyborOpcji != 5);
 }
 
-void MenuZamownien()
+void MenuOperacjenaZamownieniach()
 {
     int wyboropcji;
     do {
         cout << "Menu Wyswielania Zamowien:" << endl;
         cout << "[1] - Dodawanie Zamówienia" << endl;
         cout << "[2] - Usuwanie Zamówienia" << endl;
-        cout << "[3] - Powrót do Menu Głównego" << endl;
-        cout << "Wybierz jedną z opcji podanych (1-3)" << endl << endl;
+        cout << "[3] - Zmiana Zamówienia" << endl;
+        cout << "[4] - Powrót do Menu Głównego" << endl;
+        cout << "Wybierz jedną z opcji podanych (1-4)" << endl << endl;
 
         cin >> wyboropcji;
 
@@ -162,81 +163,43 @@ void MenuZamownien()
             break;
         }
         case 3:
-            break;
-        default:
         {
-            cout << "Podany numer nie ma swojego odzwierciedlenia w menu. Prosze wybierz numer w przedziale 1-2";
-            break;
-        }
-        }
-    }while (wyboropcji != 3);
-}
-/*
-void menuDodawanie_Zamowienia()
-{
-    int wyborOpcji;
+            int cyfraZamowienia;
+            cout << "Zmiana statusu" << endl;
+            do {
+                long IdZamowienia;
+                cout << "Podaj Id Zamówienia, które chcesz usunąć" << endl;
+                cin >> IdZamowienia;
+                try {
+                    Zamowienie& zamowienie = Baza_Zamowienia.getById(IdZamowienia);
+                    cout << "Podaj Status Zamówienia" << endl;
+                    do {
+                        cout << "Podaj Numer od 0 do 2" << endl << "[0]-W Trakcie Zamówienia" << "\n [1]-Zamówione" << endl;
+                        cin >> cyfraZamowienia;
+                    } while (cyfraZamowienia != 0 && cyfraZamowienia != 1);
 
-    do {
-        cout << "Menu Dodawania Zamówienia:" << endl;
-        cout << "[1] - Dodaj Zamówienie" << endl;
-        cout << "[2] - Powrót do Menu Głównego" << endl;
-        cout << "Wybierz jedną z opcji (1-2): ";
-        cin >> wyborOpcji;
+                    Zamowienie::StatusZamowienia status = (Zamowienie::StatusZamowienia)cyfraZamowienia;
+                    zamowienie.setStatusZamowienia(status);
 
-        switch (wyborOpcji)
-        {
-        case 1:
-        {
-            bool wpisano = false;
-            Zamowienie* pNew = new Zamowienie();
-            while (!wpisano)
-            {
-                if (pNew->uzupelnijDane())
-                {
-                    wpisano = true;
+                    break;
                 }
-            }
+                catch (...) {
+                    cout << "Takiego zamówienia nie ma w bazie, podaj poprawne ID";
+                }
+            } while (true);
 
-            pNew->wypisz();
-            pNew->dodajZamowienie();
-
-            delete pNew;
+            cout << "Status został zauktualizowany" << endl;
+            break;
         }
-        break;
-        case 2:
-            cout << "Powrót do Menu Głównego" << endl;
+        case 4:
             break;
         default:
-            cout << "Podany numer nie ma swojego odzwierciedlenia w menu. Proszę wybierz numer w przedziale 1-2." << endl;
+        {
+            cout << "Podany numer nie ma swojego odzwierciedlenia w menu. Prosze wybierz numer w przedziale 1-4";
             break;
         }
-    } while (wyborOpcji != 2);
+        }
+    }while (wyboropcji != 4);
 }
-*/
 
-void menuUsuwanie_Zamowienia()
-{
-	int wyboropcji;
-	cout << "Menu Usuwania Zamówienia:" << endl;
-	cout << "[1] - Usuwanie Zamówienia" << endl;
-	cout << "[2] - Powrót do Menu Głównego" << endl;
-	cout << "Wybierz jedną z opcji podanych (1-2)" << endl << endl;
-
-	cin >> wyboropcji;
-
-	switch (wyboropcji)
-	{
-	case 1:
-	{
-		cout << "Usuwanie Zamówienia";
-		//kod
-	}
-	case 2:
-		break; //Powrót do Menu Głównego
-
-	default:
-		cout << "Podany numer nie ma swojego odzwierciedlenia w menu. Prosze wybierz numer w przedziale 1-2";
-		break;
-	}
-}
 

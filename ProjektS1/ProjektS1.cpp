@@ -19,13 +19,11 @@ int main()
 	case 1:
 		MenuKategorie_z_bazy_dannych();
 	case 2:
-		MenuZamownien();
+		MenuOperacjenaZamownieniach();
 	case 3:
-		
-	case 6:
 		break;
 	default:
-		cout << "Podany numer nie ma swojego odzwierciedlenia w menu. Prosze wybierz numer w przedziale 1-6";
+		cout << "Podany numer nie ma swojego odzwierciedlenia w menu. Prosze wybierz numer w przedziale 1-3";
 		break;
 	}
 }

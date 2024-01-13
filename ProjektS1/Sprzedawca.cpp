@@ -20,14 +20,14 @@ std::string Sprzedawca::getNumer()const
 	return numer;
 }
 void Sprzedawca::setImie(std::string noweImie) {
-	if (validate(noweImie, std::regex("^[A-Z][a-z]+$")))
+	if (validate(noweImie, std::regex("^[A-ZĄĆĘŁŃÓŚŹŻ][a-ząćęłńóśźż]+$")))
 		imie = noweImie;
 	else
 		throw "Niepoprawne imię sprzedawcy";
 }
 
 void Sprzedawca::setNazwisko(std::string noweNazwisko) {
-	if (validate(noweNazwisko, std::regex("^[A-Z][a-z]+$")))
+	if (validate(noweNazwisko, std::regex("^[A-ZĄĆĘŁŃÓŚŹŻ][a-ząćęłńóśźż]+$")))
 		nazwisko = noweNazwisko;
 	else
 		throw "Niepoprawne nazwisko sprzedawcy";
