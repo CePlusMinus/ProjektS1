@@ -125,7 +125,7 @@ void MenuOperacjenaZamownieniach()
             cout << "Dodawanie Zamówienia" << endl;
             cout<< "Podaj Status Zamówienia" <<endl;
             do {
-                cout << "Podaj numer od 0 do 1" << endl << "[0]-W Trakcie Zamówienia" << "\n [1]-Zamówione" << endl;
+                cout << "Podaj numer od 0 do 1" << endl << "[0]-W Trakcie Zamówienia" << "\n[1]-Zamówione" << endl;
                 cin >> cyfraZamowienia;
             } while (cyfraZamowienia != 0 && cyfraZamowienia != 1);
 
