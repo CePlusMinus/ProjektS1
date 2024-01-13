@@ -6,6 +6,7 @@
 #include "includes/Mieszkanie.h"
 #include "includes/Zamowienie.h"
 #include "includes/BazaDanych.h"
+#include "includes/Logger.h"
 #include <fstream>
 #include <sstream>
 #include <iomanip>
@@ -140,6 +141,7 @@ void MenuOperacjenaZamownieniach()
             Zamowienie* zamowienie = new Zamowienie(IdMieszkania, IdSprzedawcy, IdKlienta, status);
             Baza_Zamowienia.save(*zamowienie);
                 cout << "Dodano nowe zamówienie"<<endl;
+                Logger::log("Dodano zamówienie po Id " + to_string(zamowienie->getId()));
             break;
         }
         case 2:
@@ -151,6 +153,7 @@ void MenuOperacjenaZamownieniach()
                 cin >> IdZamowienia;
                 try {
                     Zamowienie& zamowienie = Baza_Zamowienia.getById(IdZamowienia);
+                    Logger::log("Usunieto zamówienie po Id " + to_string(IdZamowienia));
                     Baza_Zamowienia.remove(zamowienie);
                     break;
                 }
@@ -180,6 +183,7 @@ void MenuOperacjenaZamownieniach()
 
                     Zamowienie::StatusZamowienia status = (Zamowienie::StatusZamowienia)cyfraZamowienia;
                     zamowienie.setStatusZamowienia(status);
+                    Logger::log("Zmieniono status zamówienia " + to_string(IdZamowienia)+" na "+ to_string(int(status)));
 
                     break;
                 }

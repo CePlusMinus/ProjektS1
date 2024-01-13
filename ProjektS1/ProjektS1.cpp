@@ -1,14 +1,14 @@
 ﻿#include <iostream>
 #include <locale>
-#include "includes/Klient.h"
-#include "includes/BazaDanych.h"
 #include "includes/Menu.h"
+#include "includes/Logger.h"
 
 using namespace std;
 int main()
 {
 	std::setlocale(LC_ALL, "Polish.UTF-8");
 
+	Logger::log("Uruchomiono program");
 	Wyswietl_MenuGlowne();
 	int wyboropcji = 0;
 
@@ -26,4 +26,6 @@ int main()
 		cout << "Podany numer nie ma swojego odzwierciedlenia w menu. Prosze wybierz numer w przedziale 1-3";
 		break;
 	}
+	Logger::log("Zamknięto program");
+	Logger::flush();
 }
