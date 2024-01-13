@@ -52,7 +52,7 @@ void Sprzedawca::setNumer(std::string nowyNumer)
 		throw "Niepoprawny numer";
 }
 
-Sprzedawca::Sprzedawca(std::string imie, std::string naziwsko, std::string email, std::string numer){
+Sprzedawca::Sprzedawca(std::string imie, std::string nazwisko, std::string email, std::string numer){
 	setImie(imie);
 	setNazwisko(nazwisko);
 	setEmail(email);
