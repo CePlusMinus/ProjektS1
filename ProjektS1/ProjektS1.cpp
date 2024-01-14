@@ -18,8 +18,10 @@ int main()
 	{
 	case 1:
 		MenuKategorie_z_bazy_dannych();
+		break;
 	case 2:
 		MenuOperacjenaZamownieniach();
+		break;
 	case 3:
 		break;
 	default:
