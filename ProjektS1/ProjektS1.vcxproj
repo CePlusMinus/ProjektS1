@@ -150,6 +150,12 @@
     <ClInclude Include="includes\Zamowienie.h" />
     <ClInclude Include="includes\Utils.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="class Klient.txt" />
+    <Text Include="class Mieszkanie.txt" />
+    <Text Include="class Sprzedawca.txt" />
+    <Text Include="class Zamowienie.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

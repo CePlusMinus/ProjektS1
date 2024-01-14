@@ -1,0 +1,10 @@
+1;Marek;Antoniusz
+2;Jadwiga;Bendo
+3;Janusz;Tracz
+4;Anastazy;Kruk
+5;Lucy;Wilska
+6;Andrzej;Adamczewski
+7;Wojciech;Kowal
+8;Monika;Mickiewicz
+9;Feliks;Polon
+10;Piotr;Chrobry

@@ -6,5 +6,5 @@
 6;Julia;Duda;julia.duda@example.com;567890123
 7;Adrian;Zajac;adrian.zajac@example.com;012345678
 8;Dominika;Szewczyk;dominika.szewczyk@example.com;890123456
-9;Michał;Wójcik;lukasz.wojcik@example.com;345678901
+9;Michał;Wójcik;michal.wojcik@example.com;345678901
 10;Kamila;Nowakowska;kamila.nowakowska@example.com;678901234

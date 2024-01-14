@@ -80,4 +80,10 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="class Klient.txt" />
+    <Text Include="class Mieszkanie.txt" />
+    <Text Include="class Sprzedawca.txt" />
+    <Text Include="class Zamowienie.txt" />
+  </ItemGroup>
 </Project>
