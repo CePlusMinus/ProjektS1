@@ -1,5 +1,9 @@
 ﻿#pragma once
 #include "KlasaBazowa.h"
+#include <iomanip>
+#include <sstream>
+#include <clocale>
+
 class Klient : public KlasaBazowa
 {
 private:

@@ -97,9 +97,19 @@ Mieszkanie::Mieszkanie(std::string ulica, std::string numer_mieszkania, bool czy
 std::string Mieszkanie::toString()
 {
     std::string idString = id == -1 ? "[NIE USTAWIONO]" : std::to_string(id);
-    std::string wynik = "Mieszkanie[ID: " + idString + ", Ulica: " + ulica + ", Numer mieszkania: " + numer_mieszkania + ", Czy wyposażone: " + (czy_wyposazenie ? "TAK" : "NIE") + ", Wielkość mieszkania: " + std::to_string(wielkosc_mieszkania) + ", Cena mieszkania: " + std::to_string(cena_mieszkania) + " Właściciel mieszkania: " + std::to_string(wlasciciel) + "]";
+    //std::string wynik = "Mieszkanie[ID: " + idString + ", Ulica: " + ulica + ", Numer mieszkania: " + numer_mieszkania + ", Czy wyposażone: " + (czy_wyposazenie ? "TAK" : "NIE") + ", Wielkość mieszkania: " + std::to_string(wielkosc_mieszkania) + ", Cena mieszkania: " + std::to_string(cena_mieszkania) + " Właściciel mieszkania: " + std::to_string(wlasciciel) + "]";
+    std::ostringstream ss;
+    int dl_ul = 20 + znakPol(ulica);
+    ss << std::left << std::setw(3) << idString;
+    ss << std::left << std::setw(dl_ul) << ulica;
+    ss << std::left << std::setw(17) << numer_mieszkania;
+    ss << std::left << std::setw(11) << (czy_wyposazenie ? "TAK" : "NIE");
+    ss << std::left << std::setw(10) << wielkosc_mieszkania;
+    ss << std::left << std::setw(10) << cena_mieszkania;
+    ss << std::left << std::setw(3) << wlasciciel;
+    ss << std::endl;
+    return ss.str();
 
-    return wynik;
 }
 
 std::string Mieszkanie::serialize() {

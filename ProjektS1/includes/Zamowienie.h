@@ -1,4 +1,6 @@
 ﻿#pragma once
+#include <iomanip>
+#include<sstream>
 #include "KlasaBazowa.h"
 
 class Zamowienie : public KlasaBazowa

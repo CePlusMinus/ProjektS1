@@ -31,9 +31,14 @@ Klient::Klient(std::string imie, std::string nazwisko) {
 //Implementacja metody abstrakcyjnej "toString" z "KlasaBazowa"
 std::string Klient::toString() {
 	std::string idString = id == -1 ? "[NIE USTAWIONO]" : std::to_string(id);
-	std::string wynik = "Klient[ID: " + idString + ", Imię: " + imie + ", Nazwisko: " + nazwisko + "]";
-
-	return wynik;
+	std::ostringstream ss;
+	int dl_im = 20 + znakPol(imie);
+	int dl_naz = 20 + znakPol(nazwisko);
+	ss <<std::left<< std::setw(3) << idString;
+	ss << std::left<<std::setw(dl_im) << imie;
+	ss << std::left << std::setw(20) << nazwisko;
+	ss << std::endl;
+	return ss.str();
 }
 
 std::string Klient::serialize() {

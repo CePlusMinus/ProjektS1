@@ -1,6 +1,9 @@
 ﻿#pragma once
 #include <string>
 #include <regex>
+#include <codecvt>
+#include <locale>
+
 class KlasaBazowa
 {
 protected:
@@ -13,6 +16,8 @@ public:
 
 	//dalam to do sprawdzania poprawnosci zmiennych zeby nie trzeba bylo powtarzac w każdej klasie
 	bool validate(std::string input, std::regex pattern);
+
+	int znakPol(const std::string& dana);
 
 	//Metoda abstrakcyjna (wirtualna), klasy które dziedziczą po "KlasaBazowa" muszą ją zaimplementować, a ona sama domyślnie nie ma implementacji
 	virtual std::string toString()  = 0;

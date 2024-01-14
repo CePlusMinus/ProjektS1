@@ -11,6 +11,7 @@
 #include <sstream>
 #include <iomanip>
 #include <algorithm>
+#include <limits>
 
 using namespace std;
 
@@ -19,26 +20,30 @@ BazaDanych <Sprzedawca> Baza_Sprzedawca;
 BazaDanych <Mieszkanie> Baza_Mieszkanie;
 BazaDanych <Zamowienie> Baza_Zamowienia;
 
+
 void Wyswietl_MenuGlowne()
 {
-	cout << "Menu Główne:" << endl;
-	cout << "[1] - Wyświetl Kategorie Z Bazy Danych" << endl;
-    cout << "[2] - Operacje na zamówieniach" << endl;
-	cout << "[3] - Wyjście" << endl;
-	cout << "Wybierz jedną z opcji podanych [1-3]" << endl << endl;
+    system("cls");
+
+    cout << "\x1B[91;3m" << "|\t|MENU GŁÓWNE|\t    |" << "\x1B[0m" << endl;
+	cout <<"\x1B[91;3m"<< "[1]"<<"\x1B[0m"<<"Wyświetl kategorie z bazy danych\n";
+    cout << "\x1B[91;3m"<< "[2]" << "\x1B[0m" << "Operacje na zamówieniach\n";
+	cout << "\x1B[91;3m"<< "[3]" << "\x1B[0m"<< "Wyjście\n\n";
+    cout << "Wybierz jedną z opcji podanych [1-3]\n\n";
 }
 
 void MenuKategorie_z_bazy_dannych()
 {
 	int wyborOpcji;
+    
 
     do {
-        cout << "Opcje kategorii do odczytu" << std::endl;
-        cout << "[1] - Wyświetl Klientów" << std::endl;
-        cout << "[2] - Wyświetl Sprzedawców" << std::endl;
-        cout << "[3] - Wyświetl Mieszkania" << std::endl;
-        cout << "[4] - Wyświetl Zamówienia" << endl;
-        cout << "[5] - Powrót do Menu Głównego" << std::endl;
+        cout <<"\x1B[91;3m" << "OPCJE KATEGORII DO ODCZYTU" << "\x1B[0m" << endl;
+        cout <<"\x1B[91;3m" << "[1]" << "\x1B[0m" << "Wyświetl Klientów" <<endl;
+        cout <<"\x1B[91;3m" << "[2]" << "\x1B[0m" << "Wyświetl Sprzedawców" << endl;
+        cout <<"\x1B[91;3m" << "[3]" << "\x1B[0m" << "Wyświetl Mieszkania" << endl;
+        cout <<"\x1B[91;3m" << "[4]" << "\x1B[0m" << "Wyświetl Zamówienia" << endl;
+        cout <<"\x1B[91;3m" << "[5]" << "\x1B[0m" << "Powrót do Menu Głownego\n" << endl;
         cout << "Wybierz jedną z opcji (1-5): ";
 
         while (!(std::cin >> wyborOpcji)) 
@@ -52,10 +57,12 @@ void MenuKategorie_z_bazy_dannych()
         {
         case 1: 
         {
-            cout << "Wyswietlanie listy Klientów" << endl;
+            system("cls");
+            cout << "\x1B[91;3m" << "WYŚWIETLANIE LISTY KLIENTÓW" << "\x1B[0m" << endl;
+            cout << left<<setw(3) << "ID" <<left<< setw(20) << "Imię" <<left<< setw(20) << " Nazwisko" << endl;
 
             for (Klient k : Baza_Klientow.getCurrentAllByValue()) {
-                std::cout << k.toString() << "\n";
+                std::cout << k.toString()<<"\n";
             }
 
             break;
@@ -63,8 +70,9 @@ void MenuKategorie_z_bazy_dannych()
 
         case 2: 
         {
-            std::cout << "Wyświetlanie listy Sprzedawców" << std::endl;
-
+            system("cls");
+            cout << "\x1B[91;3m" << "WYŚWIETLANIE LISTY SPRZEDAWCÓW" << "\x1B[0m" << endl;
+            cout << left << setw(3) << "ID" << left << setw(20) << "Imię" << left << setw(20) << " Nazwisko" << left<<setw(40)<<" Email"<<left<<setw(14)<<" Numer telefonu"<<endl;
             for (Sprzedawca k : Baza_Sprzedawca.getCurrentAllByValue()) {
                 std::cout << k.toString() << "\n";
             }
@@ -74,8 +82,9 @@ void MenuKategorie_z_bazy_dannych()
 
         case 3: 
         {
-            std::cout << "Wyświetlanie listy Mieszkań" << std::endl;
-
+            system("cls");
+            cout << "\x1B[91;3m" << "WYŚWIETLANIE LISTY MIESZKAŃ" << "\x1B[0m" << endl;
+            cout << left << setw(3) << "ID" << left << setw(20) << "Ulica" << left << setw(17) << "Numer mieszkania" << left << setw(11) << "Wyposażone" << left << setw(10) << " Wielkość" << left << setw(10) << "  Cena" << left << "  Właściciel" << endl;
             for (Mieszkanie k : Baza_Mieszkanie.getCurrentAllByValue()) {
                 std::cout << k.toString() << "\n";
             }
@@ -84,8 +93,9 @@ void MenuKategorie_z_bazy_dannych()
 
         case 4:
         {
-            cout << "Wyswietlanie Listy Zamówień"<<endl;
-
+            system("cls");
+            cout << "\x1B[91;3m" << "WYŚWIETLANIE LISTY ZAMÓWIEŃ" << "\x1B[0m" << endl;
+            cout << left << setw(3) << "ID" << left << setw(15) << "ID mieszkania" << left << setw(15) << "ID sprzedawcy" << left << setw(15) << "ID klienta" << left << "Status" << endl;
             for (Zamowienie k : Baza_Zamowienia.getCurrentAllByValue()) {
                 std::cout << k.toString() << "\n";
             }
@@ -107,11 +117,11 @@ void MenuOperacjenaZamownieniach()
 {
     int wyboropcji;
     do {
-        cout << "Menu Wyswielania Zamowien:" << endl;
-        cout << "[1] - Dodawanie Zamówienia" << endl;
-        cout << "[2] - Usuwanie Zamówienia" << endl;
-        cout << "[3] - Zmiana Zamówienia" << endl;
-        cout << "[4] - Powrót do Menu Głównego" << endl;
+        cout << "\x1B[91;3m" << "OPERACJE NA ZAMÓWIENIACH" << "\x1B[0m" << endl;
+        cout << "\x1B[91;3m" << "[1]" << "\x1B[0m" << "Dodawanie Zamówienia" << endl;
+        cout << "\x1B[91;3m" << "[2]" << "\x1B[0m" << "Usuwanie Zamówienia" << endl;
+        cout << "\x1B[91;3m" << "[3]" << "\x1B[0m" << "Zmiana Statusu Zamówienia" << endl;
+        cout << "\x1B[91;3m" << "[4]" << "\x1B[0m" << "Powrót do Menu Głownego\n" << endl;
         cout << "Wybierz jedną z opcji podanych (1-4)" << endl << endl;
 
         cin >> wyboropcji;
@@ -120,9 +130,10 @@ void MenuOperacjenaZamownieniach()
         {
         case 1:
         {
+            system("cls");
             int cyfraZamowienia;
             long IdMieszkania, IdSprzedawcy, IdKlienta;
-            cout << "Dodawanie Zamówienia" << endl;
+            cout << "\x1B[91;3m" << "DODAWANIE ZAMÓWIENIA" << "\x1B[0m" << endl;
             cout<< "Podaj Status Zamówienia" <<endl;
             do {
                 cout << "Podaj numer od 0 do 1" << endl << "[0]-W Trakcie Zamówienia" << "\n[1]-Zamówione" << endl;
@@ -146,7 +157,8 @@ void MenuOperacjenaZamownieniach()
         }
         case 2:
         {
-            cout << "Usuwanie Zamówienia" << endl;
+            system("cls");
+            cout << "\x1B[91;3m" << "USUWANIE ZAMÓWIENIA" << "\x1B[0m" << endl;
             do {
                 long IdZamowienia;
                 cout << "Podaj Id Zamówienia, które chcesz usunąć" << endl;
@@ -167,15 +179,16 @@ void MenuOperacjenaZamownieniach()
         }
         case 3:
         {
+            system("cls");
             int cyfraZamowienia;
-            cout << "Zmiana statusu" << endl;
+            cout << "\x1B[91;3m" << "ZMIANA STATUSU ZAMÓWIENIA" << "\x1B[0m" << endl;
             do {
                 long IdZamowienia;
                 cout << "Podaj Id Zamówienia, którego status chcesz zmienić" << endl;
                 cin >> IdZamowienia;
                 try {
                     Zamowienie& zamowienie = Baza_Zamowienia.getById(IdZamowienia);
-                    cout << "Podaj Status Zamówienia" << endl;
+                    cout << "Podaj Status Zamówienia\n" << endl;
                     do {
                         cout << "Podaj Numer od 0 do 1" << endl << "[0]-W Trakcie Zamówienia" << "\n [1]-Zamówione" << endl;
                         cin >> cyfraZamowienia;

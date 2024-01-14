@@ -1,4 +1,6 @@
 ﻿#pragma once
+#include <sstream>
+#include <iomanip>
 #include "KlasaBazowa.h"
 class Mieszkanie : public KlasaBazowa
 {

@@ -47,23 +47,25 @@
     std::string Zamowienie::toString()
     {
         std::string idString = id == -1 ? "[NIE USTAWIONO]" : std::to_string(id);
-        std::string wynik = "Zamowienie[ID:" + idString + ", ID mieszkania: " + std::to_string(id_mieszkania) +
-            ", ID sprzedawcy: " + std::to_string(id_sprzedawcy) +
-            ", ID klienta: " + std::to_string(id_klienta) +
-            ", Status zamowienia: ";
+        std::string wynik;
 
         switch (status_zamowienia) 
         {
         case StatusZamowienia::W_TRAKCIE:
-            wynik += "W_TRAKCIE";
+            wynik = "W TRAKCIE";
             break;
         case StatusZamowienia::ZAMOWIONE:
-            wynik += "ZAMOWIONE";
+            wynik = "ZAMOWIONE";
             break;
         }
-
-        wynik += "]";
-        return wynik;
+        std::ostringstream ss;
+        ss << std::left << std::setw(3) << idString;
+        ss << std::left << std::setw(15) << id_mieszkania;
+        ss << std::left << std::setw(15) << id_sprzedawcy;
+        ss << std::left << std::setw(15) << id_klienta;
+        ss << std::left << std::setw(10) << wynik;
+        ss << std::endl;
+        return ss.str();
     }
     std::string Zamowienie::serialize() {
         std::string statusStr;

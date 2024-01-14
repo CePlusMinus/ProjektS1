@@ -14,7 +14,7 @@ int main()
 		int wyboropcji = 0;
 
 		cin >> wyboropcji;
-
+		system("cls");
 		switch (wyboropcji)
 		{
 		case 1: {
@@ -26,14 +26,17 @@ int main()
 			break;
 		}
 		case 3: {
+			Logger::log("Zamknięto program");
+			Logger::flush();
 			exit(0);
 			break;
 		}
 		default: {
-			cout << "Podany numer nie ma swojego odzwierciedlenia w menu. Prosze wybierz numer w przedziale 1-3";
+			cout << "Podany numer nie ma swojego odzwierciedlenia w menu. Prosze wybierz numer w przedziale 1-3\n\n";
 			break;
 		}
+		 std::cin.clear();
+		 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		}
 	}
-	
 }

@@ -1,5 +1,7 @@
 ﻿#pragma once
 #include <string>
+#include <sstream>
+#include <iomanip>
 #include "KlasaBazowa.h"
 class Sprzedawca : public KlasaBazowa
 {

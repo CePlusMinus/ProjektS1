@@ -61,9 +61,17 @@ Sprzedawca::Sprzedawca(std::string imie, std::string nazwisko, std::string email
 
 std::string Sprzedawca::toString() {
 	std::string idString = id == -1 ? "[NIE USTAWIONO]" : std::to_string(id);
-	std::string wynik = "Sprzedawca[ID: " + idString + ", Imię: " + imie + ", Nazwisko: " + nazwisko + ", Email: "+email+ ", Numer telefonu:"+ numer+"]";
+	std::ostringstream ss;
+	int dl_im = 20 + znakPol(imie);
+	int dl_naz = 20 + znakPol(nazwisko);
+	ss << std::left << std::setw(3) << idString;
+	ss << std::left << std::setw(dl_im) << imie;
+	ss << std::left << std::setw(dl_naz) << nazwisko;
+	ss << std::left << std::setw(40) << email;
+	ss << std::left << std::setw(9) << numer;
+	ss << std::endl;
+	return ss.str();
 
-	return wynik;
 }
 
 std::string Sprzedawca::serialize() {
