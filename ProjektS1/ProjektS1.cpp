@@ -9,25 +9,31 @@ int main()
 	std::setlocale(LC_ALL, "Polish.UTF-8");
 
 	Logger::log("Uruchomiono program");
-	Wyswietl_MenuGlowne();
-	int wyboropcji = 0;
+	while (true) {
+		Wyswietl_MenuGlowne();
+		int wyboropcji = 0;
 
-	cin >> wyboropcji;
+		cin >> wyboropcji;
 
-	switch (wyboropcji)
-	{
-	case 1:
-		MenuKategorie_z_bazy_dannych();
-		break;
-	case 2:
-		MenuOperacjenaZamownieniach();
-		break;
-	case 3:
-		break;
-	default:
-		cout << "Podany numer nie ma swojego odzwierciedlenia w menu. Prosze wybierz numer w przedziale 1-3";
-		break;
+		switch (wyboropcji)
+		{
+		case 1: {
+			MenuKategorie_z_bazy_dannych();
+			break;
+		}
+		case 2: {
+			MenuOperacjenaZamownieniach();
+			break;
+		}
+		case 3: {
+			exit(0);
+			break;
+		}
+		default: {
+			cout << "Podany numer nie ma swojego odzwierciedlenia w menu. Prosze wybierz numer w przedziale 1-3";
+			break;
+		}
+		}
 	}
-	Logger::log("Zamknięto program");
-	Logger::flush();
+	
 }
